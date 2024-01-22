@@ -23,10 +23,33 @@ struct ContentView: View {
     @State private var remainingFunds = 1000
     
     var exhaustPackageEnabled: Bool {
-        return true
-        // custom code
+        if exhaustPackage == false && remainingFunds < 500 {
+            return false
+        } else {
+            return true
+        }
     }
-
+    var tiresPackageEnabled: Bool {
+        if tiresPackage == false && remainingFunds < 500 {
+            return false
+        } else {
+            return true
+        }
+    }
+    var enginePackageEnabled: Bool {
+        if enginePackage == false && remainingFunds < 1000 {
+            return false
+        } else {
+            return true
+        }
+    }
+    var gearsPackageEnabled: Bool {
+        if gearsPackage == false && remainingFunds < 750 {
+            return false
+        } else {
+            return true
+        }
+    }
 
     var body: some View {
         let exhaustPackageBinding = Binding<Bool> (
@@ -103,8 +126,10 @@ struct ContentView: View {
                     Toggle("Exhaust Package (Cost: 500)", isOn: exhaustPackageBinding)
                         .disabled(!exhaustPackageEnabled)
                     Toggle("Tires Package (Cost: 500)", isOn: tiresPackageBinding)
+                        .disabled(!tiresPackageEnabled)
                     Toggle("Engine Package (Cost: 1000)", isOn: enginePackageBinding)
-                    Toggle("Gears Package (Cost: 750)", isOn: gearsPackageBinding)
+                        .disabled(!enginePackageEnabled)
+                    Toggle("Gears Package (Cost: 750)", isOn: gearsPackageBinding)                        .disabled(!gearsPackageEnabled)
                 }
             }
             Text("Remaining Funds: \(remainingFunds)")
