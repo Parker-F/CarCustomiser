@@ -14,7 +14,7 @@ struct Car {
     var acceleration: Double
     var handling: Int
     
-    func displayInfo() -> String{
+    func displayStats() -> String{
         return("""
                 Make: \(make)
                 Model: \(model)
@@ -24,3 +24,6 @@ struct Car {
 """)
     }
 }
+
+
+

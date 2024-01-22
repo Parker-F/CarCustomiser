@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    let car = Car(make: "Mazda", model: "MX-5", topSpeed: 125, acceleration: 7.7, handling: 5)
+    let starterCars = StarterCars()
+    @State private var selectedCar: Int = 0
+    
     var body: some View {
-        Text("Car Make: \(car.make)")
-        .padding()
-        
+        VStack(alignment: .leading, spacing: 20){
+            Text("\(StarterCars.cars
+                [selectedCar].displayStats())")
+            Button("Random Car", action: {
+                selectedCar = Int.random(in: 0
+                    ..<
+                    self.starterCars.cars.count)
+            })
+        }
     }
 }
  
