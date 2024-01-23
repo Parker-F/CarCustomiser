@@ -116,7 +116,7 @@ struct ContentView: View {
         VStack {
             Form {
                 VStack(alignment: .leading, spacing: 20){
-                    Text("\(StarterCars.cars[selectedCar].displayStats())")
+                    Text("\(starterCars.cars[selectedCar].displayStats())")
                     Button("Random Car", action: {
                         selectedCar += 1
                         resetDisplay()
